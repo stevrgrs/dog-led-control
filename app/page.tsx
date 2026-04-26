@@ -26,26 +26,46 @@ export default function Home() {
       return;
     }
 
-    setStatus(`Sent: ${command}`);
+    if (command === "dispense_treat") {
+      setStatus("Treat is being dispensed...");
+    } else {
+      setStatus(`Sent: ${command}`);
+    }
   }
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
-      <h1 className="text-2xl mb-6">Dog Device Control</h1>
+      <h1 className="text-2xl mb-6">FreshPaws Control</h1>
 
-      <button onClick={() => sendCommand("led_on")} className="bg-green-600 p-4 m-2 w-40">
+      <button
+        onClick={() => sendCommand("led_on")}
+        className="bg-green-600 p-4 m-2 w-56"
+      >
         LED ON
       </button>
 
-      <button onClick={() => sendCommand("led_off")} className="bg-red-600 p-4 m-2 w-40">
+      <button
+        onClick={() => sendCommand("led_off")}
+        className="bg-red-600 p-4 m-2 w-56"
+      >
         LED OFF
       </button>
 
-      <button onClick={() => sendCommand("blink")} className="bg-blue-600 p-4 m-2 w-40">
+      <button
+        onClick={() => sendCommand("blink")}
+        className="bg-blue-600 p-4 m-2 w-56"
+      >
         BLINK
       </button>
 
-      <p className="mt-4">{status}</p>
+      <button
+        onClick={() => sendCommand("dispense_treat")}
+        className="bg-purple-600 p-4 m-2 w-56 text-lg font-bold"
+      >
+        🍖 Dispense Treat
+      </button>
+
+      <p className="mt-4 text-yellow-400">{status}</p>
     </main>
   );
 }
